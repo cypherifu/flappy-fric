@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="fricprofile.png">
+    <link rel="icon" type="image/png" href="images/fricprofile.png">
     <title>Flappy Fric</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -24,14 +24,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* Ensure full height usage */
             overflow: hidden;
-            /* Prevent unwanted scroll */
         }
 
         .game-container {
             width: 90vw;
-            /* Make it responsive */
             max-width: 800px;
             height: auto;
             padding: 20px;
@@ -64,11 +61,8 @@
             display: block;
             border: 2px solid #333;
             width: 100%;
-            /* Auto-adjust width */
             height: auto;
-            /* Keep aspect ratio */
             max-height: 80vh;
-            /* Prevent overflowing on small screens */
         }
 
         .score-container {
@@ -110,19 +104,19 @@
 <body>
     <div class="game-container">
         <div class="header">
-            <img src="fricprofile.png" alt="Fric Profile">
+            <img src="images/fricprofile.png" alt="Fric Profile">
             <h1>Flappy Fric</h1>
             <!--<div class="title-bar"></div>-->
             <h2>by Rifu</h2>
         </div>
         <div class="score-container">
             <span>Score: <span id="score">0</span></span>
-            <span>Coins: <span id="coins">0</span></span>
+            <span>$Fric: <span id="coins">0</span></span>
         </div>
         <canvas id="gameCanvas"></canvas>
         <!-- <p>Press Space or Tap to Jump</p> -->
         <div id="gameOverScreen" class="game-over">
-            <img src="gameover.png" alt="Game Over" class="game-over-img">
+            <img src="images/gameover.png" alt="Game Over" class="game-over-img">
             <p>You don't have enough ConFriction!</p>
             <p>Stop fudding! Press space now!</p>
         </div>
