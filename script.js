@@ -16,10 +16,10 @@ window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
 const fricImg = new Image();
-fricImg.src = "/images/fric.png";
+fricImg.src = "./images/fric.png";
 
 const coinImg = new Image();
-coinImg.src = "/images/coin.png";
+coinImg.src = "./images/coin.png";
 
 // Settings
 let fricSize = 40;
