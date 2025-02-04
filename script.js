@@ -185,13 +185,13 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-document.addEventListener("click", function() {
+/* document.addEventListener("click", function() {
     if (gameOver) {
         restartGame();
     } else {
         fric.velocity = fric.lift;
     }
-});
+}); */
 
 document.addEventListener("touchstart", function(event) {
     event.preventDefault();
