@@ -16,10 +16,10 @@ window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
 const fricImg = new Image();
-fricImg.src = "fric.png";
+fricImg.src = "/images/fric.png";
 
 const coinImg = new Image();
-coinImg.src = "coin.png";
+coinImg.src = "/images/coin.png";
 
 // Settings
 let fricSize = 40;
@@ -131,7 +131,7 @@ function draw() {
         ctx.fillRect(pipes[i].x, 0, pipeWidth, pipes[i].top);
         ctx.fillStyle = "red";
         ctx.fillRect(pipes[i].x, pipes[i].bottom, pipeWidth, canvas.height - pipes[i].bottom);
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "red";
     }
 
     // Draw coins
@@ -160,13 +160,11 @@ function restartGame() {
     document.getElementById("gameOverScreen").style.display = "none";
 }
 
-
 function gameLoop() {
     update();
     draw();
     requestAnimationFrame(gameLoop);
 }
-
 
 gameLoop();
 
