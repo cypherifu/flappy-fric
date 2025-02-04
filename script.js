@@ -175,6 +175,8 @@ function gameLoop(timestamp) {
 requestAnimationFrame(gameLoop);
 
 // Controls
+let lastJumpTime = 0;
+
 document.addEventListener("keydown", function(event) {
     if (event.code === "Space") {
         if (gameOver) {
@@ -185,19 +187,17 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-/* document.addEventListener("click", function() {
-    if (gameOver) {
-        restartGame();
-    } else {
-        fric.velocity = fric.lift;
-    }
-}); */
-
 document.addEventListener("touchstart", function(event) {
     event.preventDefault();
-    if (gameOver) {
-        restartGame();
-    } else {
-        fric.velocity = fric.lift;
+
+    const now = Date.now();
+    if (now - lastJumpTime > 100) { // 100ms delay
+        lastJumpTime = now;
+        if (gameOver) {
+            restartGame();
+        } else {
+            fric.velocity = fric.lift;
+        }
     }
 }, { passive: false });
+
