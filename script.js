@@ -42,13 +42,15 @@ const pipeWidth = 50;
 let score = 0;
 let coinCount = 0;
 let gameOver = false;
+let lastTime = 0;
 
-// Game loop
-function update() {
+// Game loop (now with deltaTime)
+function update(deltaTime) {
     if (gameOver) return;
 
-    fric.velocity += fric.gravity;
-    fric.y += fric.velocity;
+    // Normalize movement with deltaTime
+    fric.velocity += fric.gravity * deltaTime;
+    fric.y += fric.velocity * deltaTime;
 
     // Prevent fric from going off screen
     if (fric.y + fric.height > canvas.height) {
@@ -64,7 +66,7 @@ function update() {
 
     // Update pipes
     for (let i = 0; i < pipes.length; i++) {
-        pipes[i].x -= pipeSpeed;
+        pipes[i].x -= pipeSpeed * deltaTime;
 
         // Collision detection
         if (
@@ -78,7 +80,7 @@ function update() {
 
     // Update coins
     for (let i = 0; i < coins.length; i++) {
-        coins[i].x -= pipeSpeed;
+        coins[i].x -= pipeSpeed * deltaTime;
 
         // Collision with fric
         if (
@@ -160,14 +162,19 @@ function restartGame() {
     document.getElementById("gameOverScreen").style.display = "none";
 }
 
-function gameLoop() {
-    update();
+// Game loop with deltaTime to fix high refresh rate issues
+function gameLoop(timestamp) {
+    let deltaTime = (timestamp - lastTime) / 16.67; // 60fps
+    lastTime = timestamp;
+
+    update(deltaTime);
     draw();
     requestAnimationFrame(gameLoop);
 }
 
-gameLoop();
+requestAnimationFrame(gameLoop);
 
+// Controls
 document.addEventListener("keydown", function(event) {
     if (event.code === "Space") {
         if (gameOver) {
