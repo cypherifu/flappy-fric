@@ -193,10 +193,11 @@ document.addEventListener("click", function() {
     }
 });
 
-document.addEventListener("touchstart", function() {
+document.addEventListener("touchstart", function(event) {
+    event.preventDefault();
     if (gameOver) {
         restartGame();
     } else {
         fric.velocity = fric.lift;
     }
-}); // Enable mobile touch controls
+}, { passive: false });
